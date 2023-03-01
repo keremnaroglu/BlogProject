@@ -1,4 +1,5 @@
 ﻿using BlogProject.BusinessLayer.Abstract;
+using BlogProject.DAL.Abstract;
 using BlogProject.DAL.EntityFramework;
 using BlogProject.EntityLayer.Concrete;
 using System;
@@ -11,36 +12,36 @@ namespace BlogProject.BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        private readonly EfCategoryRepository _efCategoryRepository;
+        ICategoryDAL _categoryDal;
 
-        public CategoryManager(EfCategoryRepository efCategoryRepository)
+        public CategoryManager(ICategoryDAL categoryDal)
         {
-            _efCategoryRepository = efCategoryRepository;
+            _categoryDal = categoryDal;
         }
 
         public void CategoryAdd(Category category)
         {
-            _efCategoryRepository.Insert(category);
+            _categoryDal.Insert(category);
         }
 
         public void CategoryDelete(Category category)
         {
-            _efCategoryRepository.Delete(category);
+            _categoryDal.Delete(category);
         }
 
         public void CategoryUpdate(Category category)
         {
-            _efCategoryRepository.Update(category);
+            _categoryDal.Update(category);
         }
 
         public List<Category> GetAllCategories()
         {
-            return _efCategoryRepository.GetListAll();
+            return _categoryDal.GetListAll();
         }
 
         public Category GetById(int id)
         {
-            return _efCategoryRepository.GetById(id);
+            return _categoryDal.GetById(id);
         }
     }
 }

@@ -18,6 +18,11 @@ namespace BlogProject.DAL.Repositories
             c.SaveChanges();
         }
 
+        public void Delete(Category t)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteCategory(Category category)
         {
             c.Remove(category);
@@ -32,6 +37,16 @@ namespace BlogProject.DAL.Repositories
         public List<Category> GetCategories()
         {
             return c.Categories.ToList();
+        }
+
+        public List<Category> GetListAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Category t)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Category category)
