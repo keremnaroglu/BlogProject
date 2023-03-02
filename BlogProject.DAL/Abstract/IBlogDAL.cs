@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace BlogProject.DAL.Abstract
 {
     public interface IBlogDAL : IGenericDAL<Blog>
-    { 
+    {
+        List<Blog> GetListWithCategory();
     }
 }

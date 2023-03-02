@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BlogProject.BusinessLayer.Concrete;
+using BlogProject.DAL.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BlogProject.UI.Controllers
 {
     public class BlogController : Controller
     {
+        BlogManager bm = new BlogManager(new EfBlogRepository());
         public IActionResult Index()
         {
-            return View();
+            var values = bm.GetBlogListWithCategory();
+            return View(values);
         }
     }
 }
